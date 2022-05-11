@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}コメント入力{% endblock title %}
+{% block content %}
+    <div class="container">
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+          <h2>以下の記事にコメントします</h2>
+          <div class="card mt-3">
+            <div class="card-header">
+              <h5>タイトル： {{ post.title }} </h5>
+            </div>
+            <div class="card-body">
+              <p class="card-text">内容： {{ post.text }} </p>
+              <p>投稿日時： {{ post.created_at|date:'Y/m/d H:i:s' }} </p>
+              {% if post.created_at|date:'Y.m.d.H.i.s' != post.updated_at|date:'Y.m.d.H.i.s' %}
+                <p>更新日時： {{ post.updated_at|date:'Y/m/d H:i:s'}} </p>
+              {% endif %}
+              <p class="card-text">投稿者 : {{ post.user }} さん</p>
+            <p class="card-text">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center mt-5">
+        <div class="col-md-8">
+          <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value=" {{ post.id }} ">
+            <div class="form-group">
+              {{ form }}
+              <!-- <textarea class="form-control" placeholder="内容" rows="5" name="body"></textarea> -->
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">コメントする</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      Copyright &copy; Seedkun Inc.
+ {% endblock content%}

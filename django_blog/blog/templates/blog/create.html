@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}新規投稿{% endblock title %}
+{% block content %}
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form action=" {% url 'store' %} " method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+
+              {{ title }}
+              <!-- <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title"> -->
+            </div>
+            <div class="form-group mt-3">
+              
+              {{ form }}
+              <!-- <textarea class="form-control" placeholder="内容" rows="5" name="text"></textarea> -->
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">作成</button>
+          </form>
+        </div>
+      </div>
+    </div>
+{% endblock content %}
