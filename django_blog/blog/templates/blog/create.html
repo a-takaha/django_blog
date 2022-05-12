@@ -4,7 +4,7 @@
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-8">
-          <form action=" {% url 'store' %} " method="POST">
+          <form action=" {% url 'store' %} " method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group">
 
@@ -16,8 +16,16 @@
               {{ form }}
               <!-- <textarea class="form-control" placeholder="内容" rows="5" name="text"></textarea> -->
             </div>
+            <label>image</label>
+            <div><input type="file" name="image"></div>
             <button type="submit" class="btn btn-primary mt-3">作成</button>
           </form>
+
+          {% comment %} <form action=" {% url 'store' %} " method="post" enctype="multipart/form-data">
+            <label>image</label>
+            <div><input type="file" name="image"></div>
+            {% csrf_token %}
+          </form> {% endcomment %}
         </div>
       </div>
     </div>

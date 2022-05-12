@@ -34,6 +34,12 @@ class CreatePost(forms.ModelForm):
             )
         }
 
+class CreateImage(forms.ModelForm): #Postのところで記述増やすのが正しいかも
+    class Meta:
+        model = Post
+        fields = ('title', 'link','image')
+
+
 class CommentCreateForm(forms.ModelForm):
 
     class Meta:
